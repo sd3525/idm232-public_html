@@ -8,15 +8,12 @@
 </head>
 <body>
 
-<h1> Welcome <?php include 'final/header.php'; ?>
-</h1>
-
 <?php include 'final/footer.php'; ?>
 
-
-
-
-
+<?php include_once 'public_html/final/header.php'; ?>
+<?php $title = 'Assignment - 01'; ?>
+<h1><?php echo $title; ?></h1>
+<?php include_once 'final/footer.php'; ?>
 
 
 </body>

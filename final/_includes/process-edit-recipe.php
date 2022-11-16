@@ -6,15 +6,18 @@ if (!$_POST) {
 }
 
 // Store $_POST data to variables for readability
-$recipe_name_value = $_POST['recipe_name'];
-$difficulty_value = $_POST['difficulty'];
-$prep_time_value = $_POST['prep_time'];
-$cook_time_value = $_POST['cook_time'];
-$directions_value = $_POST['directions'];
 $id_value = $_POST['id'];
+$recipe_title = $_POST['recipe_title'];
+$prep_time = $_POST['prep_time'];
+$level = $_POST['level'];
+$yield = $_POST['yield'];
+$rating = $_POST['rating'];
+$ingredients = $_POST['ingredients'];
+$instructions = $_POST['instructions'];
+
 
 // Create a SQL statement to insert the data into the database
-$query = "UPDATE recipes SET recipe_name = '{$recipe_name_value}', difficulty = '{$difficulty_value}', prep_time = '{$prep_time_value}', cook_time = '{$cook_time_value}', directions = '{$directions_value}' WHERE id = {$id_value}";
+$query = "UPDATE recipes SET recipe_title = '{$recipe_title}', prep_time = '{$prep_time}', level = '{$level}', yield = '{$yield}', rating = '{$rating}' ingredients = '{$ingredients}', instructions = '{$instructions}', WHERE id = {$id_value}";
 
 // Run the SQL statement
 $result = mysqli_query($db_connection, $query);

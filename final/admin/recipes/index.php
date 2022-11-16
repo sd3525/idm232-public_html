@@ -46,7 +46,6 @@ $result = mysqli_query($db_connection, $query);
                   <th scope="col">Level</th>
                   <th scope="col">Yield</th>
                   <th scope="col">Rating</th>
-                  <th scope="col">Rating</th>
                   <th scope="col">Ingredients</th>
                   <th scope="col">Instructions</th>
                 </tr>

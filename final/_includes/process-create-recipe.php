@@ -6,15 +6,19 @@ if (!$_POST) {
 }
 
 // Store $_POST data to variables for readability
-$recipe_name_value = $_POST['recipe_name'];
-$difficulty_value = $_POST['difficulty'];
+$recipe_title = $_POST['recipe_title'];
+$level_value = $_POST['level'];
 $prep_time_value = $_POST['prep_time'];
-$cook_time_value = $_POST['cook_time'];
+$cook_time_value = $_POST['rating'];
 $directions_value = $_POST['directions'];
 
 // Create a SQL statement to insert the data into the database
 $query = "INSERT INTO recipes (recipe_name, difficulty, prep_time, cook_time, directions) 
 VALUES ('$recipe_name_value', '$difficulty_value', '$prep_time_value', '$cook_time_value', '$directions_value')";
+
+var_dump($_POST);
+
+die;
 
 // Run the SQL statement
 $result = mysqli_query($db_connection, $query);

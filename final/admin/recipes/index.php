@@ -20,12 +20,15 @@ $result = mysqli_query($db_connection, $query);
       <div>
         <h1>Recipes</h1>
         <p>A list of all the recipes on the site</p>
+        
         <?php
-          if (isset($_GET['error'])) {
-              echo "<p>Error: " . $_GET['error'] . '</p>';
-          }
+          // if (isset($_GET['error'])) {
+          //     echo "<p>Error: " . $_GET['error'] . '</p>';
+          // }
 
 ?>
+
+
       </div>
       <div>
         <button type="button">

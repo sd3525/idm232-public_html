@@ -1,7 +1,7 @@
 <?php
 include_once __DIR__ . '/app.php';
 $page_title = 'Recipe Details';
-include_once __DIR__ . '/components/header.php'; ?>
+include_once __DIR__ . '/_components/header.php'; ?>
 <!DOCTYPE html>
 
 
@@ -90,5 +90,5 @@ include_once __DIR__ . '/components/header.php'; ?>
   </body>
 </html>
 
-<?php include_once __DIR__ . '/components/footer.php';
+<?php include_once __DIR__ . '/_components/footer.php';
 

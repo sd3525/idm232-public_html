@@ -5,90 +5,82 @@ include_once __DIR__ . '/_components/header.php'; ?>
 <!DOCTYPE html>
 
 
+<?php
+    // Search
 
-    
+// Check if search exist in query
+if (isset($_GET['search'])) {
+    $search = $_GET['search'];
+} else {
+    $search = '';
+}
 
-    <div class="center">
-      <div class="title"><b>Breakfast Quesadilla</b></div>
-      <div class="recipeflexbox">
-        <img
-          src="images/quesadilla-2.png"
-          alt="quesadillasmall"
-          class="quesadillasmall"
-        />
+$query = 'SELECT *';
+$query .= ' FROM recipes';
+$query .= " WHERE recipe_title LIKE '%{$search}%'";
+$query .= " OR prep_time LIKE '%{$search}%'";
+$query .= " OR level LIKE '%{$search}%'";
+$query .= " OR yield LIKE '%{$search}%'";
+$query .= " OR rating LIKE '%{$search}%'";
+$query .= " OR ingredients LIKE '%{$search}%'";
+$query .= " OR instructions LIKE '%{$search}%'";
+$results = mysqli_query($db_connection, $query);
 
-        <div class="flexbox-item-cs">
-          <div class="category1"><b>Total Time:</b> 40 minutes</div>
-          <div class="category2"><b>Level:</b> easy</div>
-          <div class="category3"><b>Yield: </b>4-6 servings</div>
-          <img src="images/4star.png" alt="star" class="star" />
-        </div>
+// Check if was have more than 0 results from db
+if ($results->num_rows > 0) {
+    $recipes_results = true;
+} else {
+    $recipes_results = false;
+}
+
+?>
+
+<div class="mx-auto my-16 max-w-7xl px-4">
+  <div class="px-4 sm:px-6 lg:px-8">
+    <div class="sm:flex sm:items-center">
+      <div class="sm:flex-auto">
+        <h1 class="text-xl font-semibold text-gray-900">Search Results</h1>
+        <form action="<?php echo site_url(); ?>index.php" method="GET">
+          <input class=" border-black border-2" type="text" name="search" id="search" placeholder="Search"
+            value="<?php echo $search; ?>">
+          <button type="submit">Search</button>
+        </form>
+        <h2>You searched for "<?php echo $search; ?>"</h2>
+        <?php
+        // If no results, echo no results
+        if (!$recipes_results) {
+            echo '<p>No results found</p>';
+        }
+?>
+        <?php
+// If error query param exist, show error message
+  if (isset($_GET['error'])) {
+      echo '<p class="text-red-500">' . $_GET['error'] . '</p>';
+  }?>
       </div>
-      <div class="subheading"><b>Ingredients:</b></div>
-      <ul class="component_list">
-        <li>6 Eggs</li>
-        <li>¼ cup milk</li>
-        <li>Salt and pepper</li>
-        <li>½ green pepper</li>
-        <li>4 tablespoons unsalted butter</li>
-        <li>6 slices bacon</li>
-        <li>¾ cup shredded cheddar cheese</li>
-        <li>6 medium soft tortilla shells</li>
-      </ul>
-
-      <div class="subheading"><b>Instructions:</b></div>
-      <ol class="component_list">
-        <li>
-          To prepare the eggs: In a bowl, whisk the eggs with the hot sauce and
-          salt until they are well blended. Add the beans and set aside.
-        </li>
-        <li class="paragraph">
-          To cook the eggs: Melt the butter in a medium-sized skillet (either
-          well-seasoned cast iron or nonstick) over medium heat until it’s
-          bubbling. Pour in the egg mixture and cook, stirring often, until the
-          eggs are just set, about 1 to 3 minutes. Transfer the mixture to a
-          bowl to pause the cooking process (the eggs will finish cooking in the
-          quesadilla). Stir in the green onion, cilantro and jalapeño.
-        </li>
-        <li class="paragraph">
-          To cook the quesadilla: In a separate, large skillet, warm the
-          tortilla over medium heat, flipping occasionally. Once the pan and
-          tortilla are warm, sprinkle one-half of the cheese over one-half of
-          the tortilla. Top the cheese with scrambled eggs, then top the
-          scrambled eggs with the remaining cheese.
-        </li>
-        <li class="paragraph">
-          Press the empty tortilla halve over the toppings. Let the quesadilla
-          cook until golden and crispy on the bottom (don’t stop cooking too
-          soon!), about 1 to 2 minutes, reducing the heat if necessary to
-          prevent burning the tortilla. Flip it and cook until the second side
-          is golden and crispy.
-        </li>
-        <li class="paragraph">
-          Immediately remove the skillet from the heat and transfer the
-          quesadilla to a cutting board. Let it cool for a few minutes to give
-          it time to set, then slice each quesadilla into 2 slices with a very
-          sharp knife. Serve immediately, with your favorite salsa and/or hot
-          sauce on the side.
-        </li>
-      </ol>
-      <div class="subheading"><b>Notes:</b></div>
-      <div class="subheading2"><b>MAKE IT DAIRY FREE:</b></div>
-      <div class="notes2">
-        Use olive oil instead of butter and omit the cheese.
-      </div>
-      <div class="subheading2"><b>MAKE IT GLUTEN FREE:</b></div>
-      <div class="notes2">Use gluten-free tortillas.</div>
-      <div class="subheading2"><b>TORTILLA RECOMMENDATION:</b></div>
-      <div class="notes3">
-        My favorite brand is Stacey’s Organic, which is available at Whole
-        Foods, Natural Grocer’s and my local health food store (I store them in
-        the refrigerator or freeze them if I know I won’t be able to eat them
-        within a couple of weeks).
+      <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+        <button type="button"
+          class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+          <a href="<?php echo site_url() . '/admin/services/create.php' ?>">
+            Add service</a></button>
       </div>
     </div>
-  </body>
-</html>
 
-<?php include_once __DIR__ . '/_components/footer.php';
+    <?php
+    // If we have results, show them
+      if ($recipes_results) {
+          while ($recipes_results = mysqli_fetch_assoc($results)) {
+              echo '<div class="flex flex-row justify-center items-center">';
+              echo '<h2>' . $recipes_results['recipe_title'] . ' ' . $recipes_results['prep_time'] . '</h2>';
+              echo '</div>';
+          }
+      }
+
+         // Search End
+?>
+
+  </div>
+</div>
+
+<?php include_once __DIR__ . '/_components/footer.php'; ?>
 

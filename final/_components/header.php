@@ -15,6 +15,7 @@ $document_title = $page_title . ' | ' . $site_title; // Home | JAWN Clips
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="<?php echo site_url(); ?>/recipestyles.css">
+    <link rel="stylesheet" href="https://use.typekit.net/wvt1hlm.css" />
   <title><?php echo $document_title ; ?></title>
 </head>
 

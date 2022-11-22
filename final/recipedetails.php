@@ -1,41 +1,21 @@
+<?php
+include_once __DIR__ . '/app.php';
+$page_title = 'Recipe Details';
+include_once __DIR__ . '/_components/header.php'; ?>
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recipe Details</title>
-    <link rel="stylesheet" href="recipestyles.css" />
-    <link rel="stylesheet" href="https://use.typekit.net/wvt1hlm.css" />
-  </head>
-  <body>
-    <div class="nav-bar">
-      <span
-        ><div class="homelabel"><b>Bright Bites</b></div></span
-      >
-      <ul>
-        <li>
-          <a href="/index.php" st4yle="text-decoration: none" ;
-            ><b>Recipes</b></a
-          >
-        </li>
-        <li>
-          <a href="/admin/recipes/index.php"><b>Admin</b></a>
-        </li>
-      </ul>
-    </div>
-    <div class="headerbox">
-      <img
-        src="images/quesadilla-banner.png"
-        alt="quesadillabig"
-        class="quesadillabig"
-      />
-    </div>
+
+
+
+    
 
     <div class="center">
       <div class="title"><b>Breakfast Quesadilla</b></div>
       <div class="recipeflexbox">
-        <img src="images/quesadilla-2.png" />
+        <img
+          src="images/quesadilla-2.png"
+          alt="quesadillasmall"
+          class="quesadillasmall"
+        />
 
         <div class="flexbox-item-cs">
           <div class="category1"><b>Total Time:</b> 40 minutes</div>
@@ -109,3 +89,6 @@
     </div>
   </body>
 </html>
+
+<?php include_once __DIR__ . '/_components/footer.php';
+

@@ -34,20 +34,12 @@ include_once __DIR__ . '/../../_components/header.php';
                                 <input type="text" name="recipe_title">
                             </div>
                             <div class="block">
-                                <label for="">Prep Time</label>
-                                <input type="text" name="prep_time">
+                                <label for="">Image</label>
+                                <input type="text" name="file_path">
                             </div>
                             <div class="block">
-                                <label for="">Level</label>
-                                <input type="text" name="level">
-                            </div>
-                            <div class="block">
-                                <label for="">Yield</label>
-                                <input type="text" name="yield">
-                            </div>
-                            <div class="block">
-                                <label for="">Rating</label>
-                                <input type="text" name="rating">
+                                <label for="">Introduction</label>
+                                <input type="text" name="introduction">
                             </div>
                             <div class="block">
                                 <label for="">Ingredients</label>

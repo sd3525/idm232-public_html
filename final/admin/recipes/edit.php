@@ -42,24 +42,14 @@ if ($result->num_rows > 0) {
                   value="<?php echo $recipe['recipe_title']?>">
               </div>
               <div class="block">
-                <label for="">Prep Time</label>
-                <input type="text" name="prep_time"
-                  value="<?php echo $recipe['prep_time']?>">
+                <label for="">Image</label>
+                <input type="text" name="file_path"
+                  value="<?php echo $recipe['file_path']?>">
               </div>
               <div class="block">
-                <label for="">Level</label>
-                <input type="text" name="level"
-                  value="<?php echo $recipe['level']?>">
-              </div>
-              <div class="block">
-                <label for="">Yield</label>
-                <input type="text" name="yield"
-                  value="<?php echo $recipe['yield']?>">
-              </div>
-              <div class="block">
-                <label for="">Rating</label>
-                <input type="text" name="rating"
-                  value="<?php echo $recipe['rating']?>">
+                <label for="">Instructions</label>
+                <input type="text" name="instructions"
+                  value="<?php echo $recipe['instructions']?>">
               </div>
               <div class=" block">
                 <label for="">Ingredients</label>

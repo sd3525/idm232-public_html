@@ -5,6 +5,8 @@ include_once __DIR__ . '/_components/header.php'; ?>
 <!DOCTYPE html>
 
 
+
+
 <?php
     // Search
 
@@ -18,10 +20,8 @@ if (isset($_GET['search'])) {
 $query = 'SELECT *';
 $query .= ' FROM recipes';
 $query .= " WHERE recipe_title LIKE '%{$search}%'";
-$query .= " OR prep_time LIKE '%{$search}%'";
-$query .= " OR level LIKE '%{$search}%'";
-$query .= " OR yield LIKE '%{$search}%'";
-$query .= " OR rating LIKE '%{$search}%'";
+$query .= " OR file_path LIKE '%{$search}%'";
+$query .= " OR introduction LIKE '%{$search}%'";
 $query .= " OR ingredients LIKE '%{$search}%'";
 $query .= " OR instructions LIKE '%{$search}%'";
 $results = mysqli_query($db_connection, $query);
@@ -71,7 +71,7 @@ if ($results->num_rows > 0) {
       if ($recipes_results) {
           while ($recipes_results = mysqli_fetch_assoc($results)) {
               echo '<div class="flex flex-row justify-center items-center">';
-              echo '<h2>' . $recipes_results['recipe_title'] . ' ' . $recipes_results['prep_time'] . '</h2>';
+              echo '<h2>' . $recipes_results['recipe_title'] . ' ' . $recipes_results['file_path'] . '</h2>';
               echo '</div>';
           }
       }
@@ -80,6 +80,29 @@ if ($results->num_rows > 0) {
 ?>
 
   </div>
+</div>
+
+<?php
+// get data from database
+
+$query = 'SELECT * FROM recipe ORDER BY recipe_name ASC';
+$result = mysqli_query($db_connection, $query);
+
+?>
+
+
+<div class="">
+    <div class="">
+        <div class="">
+            <h1 class="">All Recipes</h1>
+        </div>
+    </div>    
+</div>
+
+<div class="">  
+    <div class="">
+        <?php include __DIR__ . '/_components/recipeCards.php'; ?>
+    </div>
 </div>
 
 <?php include_once __DIR__ . '/_components/footer.php'; ?>

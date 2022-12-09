@@ -1,6 +1,6 @@
 <?php
 include_once __DIR__ . '/../../app.php';
-$page_title = 'Home';
+$page_title = 'Admin All Recipes';
 include_once __DIR__ . '/../../_components/header.php';
 ?>
 <?php
@@ -17,7 +17,7 @@ $recipes = get_recipes();
       <div class="sm:flex sm:items-center">
         <div class="text-white">
           <h1>Recipes</h1>
-          <p>A list of all the recipes including their title, ingredients and steps</p>
+          <p>A list of all the recipes including their title, ingredients and steps:</p>
           <?php
             // If error query param exist, show error message
               if (isset($_GET['error'])) {

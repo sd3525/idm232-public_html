@@ -8,10 +8,8 @@ if (!isset($recipes)) {
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Recipe Title</th>
-      <th scope="col">Prep Time</th>
-      <th scope="col">Level</th>
-      <th scope="col">Yield</th>
-      <th scope="col">Rating</th>
+      <th scope="col">File Path</th>
+      <th scope="col">Introduction</th>
       <th scope="col">Ingredients</th>
       <th scope="col">Instructions</th>
       <th scope="col">
@@ -29,10 +27,8 @@ if (!isset($recipes)) {
           <tr>
           <td>{$recipe['id']}</td>
           <td>{$recipe['recipe_title']}</td>
-          <td>{$recipe['prep_time']}</td>
-          <td>{$recipe['level']}</td>
-          <td>{$recipe['yield']}</td>
-          <td>{$recipe['rating']}</td>
+          <td>{$recipe['file_path']}</td>
+          <td>{$recipe['introduction']}</td>
           <td>{$recipe['ingredients']}</td>
           <td>{$recipe['instructions']}</td>
           <td>

@@ -12,18 +12,19 @@ if (isset($_GET['search'])) {
 }
 
 $query = 'SELECT *';
-$query .= ' FROM users';
-$query .= " WHERE first_name LIKE '%{$search}%'";
-$query .= " OR last_name LIKE '%{$search}%'";
-$query .= " OR email LIKE '%{$search}%'";
-$query .= " OR phone LIKE '%{$search}%'";
+$query .= ' FROM recipe';
+$query .= " WHERE recipe_title LIKE '%{$search}%'";
+$query .= " OR file_path LIKE '%{$search}%'";
+$query .= " OR introduction LIKE '%{$search}%'";
+$query .= " OR ingredients LIKE '%{$search}%'";
+$query .= " OR instructions LIKE '%{$search}%'";
 $results = mysqli_query($db_connection, $query);
 
 // Check if was have more than 0 results from db
 if ($results->num_rows > 0) {
-    $users_results = true;
+    $recipe_results = true;
 } else {
-    $users_results = false;
+    $recipe_results = false;
 }
 
 ?>
@@ -42,7 +43,7 @@ if ($results->num_rows > 0) {
         <h2>You searched for "<?php echo $search; ?>"</h2>
         <?php
         // If no results, echo no results
-        if (!$users_results) {
+        if (!$recipe_results) {
             echo '<p>No results found</p>';
         }
 ?>
@@ -52,26 +53,31 @@ if ($results->num_rows > 0) {
       echo '<p class="text-red-500">' . $_GET['error'] . '</p>';
   }?>
       </div>
-      <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-        <button type="button"
-          class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
-          <a href="<?php echo site_url() . '/admin/services/create.php' ?>">
-            Add service</a></button>
-      </div>
-    </div>
 
     <?php
     // If we have results, show them
-      if ($users_results) {
-          while ($users_results = mysqli_fetch_assoc($results)) {
-              echo '<div class="flex flex-row justify-center items-center">';
-              echo '<h2>' . $users_results['first_name'] . ' ' . $users_results['last_name'] . '</h2>';
-              echo '</div>';
-          }
+    if ($recipe_results) {
+      while ($recipe_results = mysqli_fetch_assoc($results)) {
+        //   echo '<div class= "">';
+        //   echo '<p class= "" >' . $recipe_results['recipe_name'] . '<p>';
+        //   echo '<p class= "" >' . $recipe_results['description'] . '<p>' ;
+        //   echo '</div>';
+        echo "
+            <a href='{$site_url}/recipeDetail.php?id={$recipe_results['id']}' class='' >
+                <div class=''>
+                <img class='' width='100px' height='100px' src='{$site_url}/{$recipe_results['image_path']}' alt=''>
+                    <div class=''>
+                        <p class=''>{$recipe_results['recipe_title']}</p>
+                        <p class=''>{$recipe_results['file_path']}</p>
+                    </div> 
+                </div>
+            </a>
+        ";
       }
+  }
 ?>
 
-  </div>
+</div>
 </div>
 
 

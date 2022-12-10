@@ -9,7 +9,7 @@ $recipes = get_recipes();
 
     <div>
         <?php $title = 'Admin';?>
-        <h1 class="text-center text-white"><?php echo $title; ?></h1>
+        <div class="text-center"><?php echo $title; ?></div>
     </div>
 
   <div class="mx-auto my-16 max-w-7xl px-4">
@@ -17,7 +17,7 @@ $recipes = get_recipes();
       <div class="sm:flex sm:items-center">
         <div class="text-white">
           <h1>Recipes</h1>
-          <p>A list of all the recipes including their title, ingredients and steps:</p>
+          <div class="center-list">A list of all the recipes including their title, ingredients and steps:</div>
           <?php
             // If error query param exist, show error message
               if (isset($_GET['error'])) {
@@ -26,8 +26,8 @@ $recipes = get_recipes();
           ?>
         </div>
         <div>
-        <button class="btn btn-primary">
-          <a class="text-white" href="<?php echo site_url(); ?>/admin/recipes/create.php" style="text-decoration: none;">Create Recipe</a>
+        <button class="search-btn2">
+          <a class="text-white" href="<?php echo site_url(); ?>/admin/recipes/create.php" style="text-decoration: none;">Create</a>
         </button>
         </div>
       </div>

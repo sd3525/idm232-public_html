@@ -26,14 +26,6 @@ include_once __DIR__ . '/_components/header.php'; ?>
       </div>
       <div class="subheading"><b>Ingredients:</b></div>
       <ul class="component_list">
-        <li>6 Eggs</li>
-        <li>¼ cup milk</li>
-        <li>Salt and pepper</li>
-        <li>½ green pepper</li>
-        <li>4 tablespoons unsalted butter</li>
-        <li>6 slices bacon</li>
-        <li>¾ cup shredded cheddar cheese</li>
-        <li>6 medium soft tortilla shells</li>
       </ul>
 
       <div class="subheading"><b>Instructions:</b></div>

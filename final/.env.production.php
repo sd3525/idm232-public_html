@@ -1,7 +1,7 @@
 <?php
 // Specific to the current environment you're on.
 $APP_CONFIG = [
-    'environment' => 'development',
+    'environment' => 'production',
     'site_name' => 'Bright Bites',
     'site_url' => 'https://sashademo.com/idm232/final',
     'database_host' => 'localhost',

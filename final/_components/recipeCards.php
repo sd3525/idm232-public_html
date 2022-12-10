@@ -3,20 +3,20 @@ if (!isset($result)) {
     echo '$recipes variable is not defined. Please check the code.';
 }
 ?>    
-          
+<div class="recipes-container">      
 <?php
     $site_url = site_url();
-    while ($recipes = mysqli_fetch_array($results)) {
+    while ($recipes = mysqli_fetch_array($result)) {
         echo "
-        <a href='{$site_url}/recipeDetail.php?id={$recipes['id']}' class=''>
-            <div class=''>
-            <img class='' width='100px' height='100px' src='{$recipes['image_path']}' alt=''>                
+        <a href='{$site_url}/recipe/index.php?id={$recipes['id']}' class=''>
+            <div class='recipe-card'>
+            <img class='recipe-card-img' width='100px' height='100px' src='{$site_url}/{$recipes['file_path']}' alt=''>                
                 <div class=''>
-                    <p class=''>{$recipes['recipes']}</p>
-                    <p class=''>{$recipes['introduction']}</p>
+                    <p class='recipe-card-title'>{$recipes['recipe_title']}</p>
                 </div> 
             </div>
         </a>    
         ";
     }
 ?>
+</div>
